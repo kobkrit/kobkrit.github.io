@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>JFDI Green/Red Metrics Board</title>
+</head>
+<style>
+    body {
+        padding: 0px;
+        margin: 0px;
+    }
+</style>
+<body>
+    <div style="width: 100%">
+        <div id="progress" style="background: red; height:2px">
+        </div>
+    </div>
+    <iframe id="frame" src="https://docs.google.com/spreadsheet/pub?key=0AsZDvlyb67zwdDBlbnpYNWRKUWxIU0dhMmMyTVduU2c&single=true&gid=1&output=html" style="width:2000px;height:2000px;-webkit-transform:scale(0.65) translate(-540px,-540px);-moz-transform-scale(0.65);"></iframe>
+    <script language="javascript">
+        var timeout = 3000;
+        var start = timeout;
+        setInterval(function(){
+            start--;
+            $("#progress").css("width", (timeout-start)/timeout*100.0+"%");
+            if (start <= 0){
+                console.log("Refreshing");
+                var iframe = document.getElementById("frame");
+                iframe.src = iframe.src;
+                start = timeout;
+            }
+        }, 10);
+    </script>
+</body>
+</html>
