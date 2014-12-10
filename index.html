@@ -20,6 +20,16 @@
     <script language="javascript">
         var timeout = 50;
         var start = timeout;
+        var y = 0;
+        var m = 1;
+        setInterval(function(){
+            y+=m*10;
+            if (y<=0 || y>1000){
+                m*=-1;
+            }
+            window.scrollTo(0,y);
+        });
+
         setInterval(function(){
             start--;
             $("#progress").css("width", (timeout-start)/timeout*100.0+"%");
