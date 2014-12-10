@@ -24,11 +24,11 @@
         var m = 1;
         setInterval(function(){
             y+=m*10;
-            if (y<=0 || y>1000){
+            if (y<=-500 || y>900){
                 m*=-1;
             }
-            window.scrollTo(0,y);
-        });
+            window.scrollTo(0,y<0?0:y);
+        }, 100);
 
         setInterval(function(){
             start--;
